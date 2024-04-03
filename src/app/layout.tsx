@@ -1,3 +1,4 @@
+import Providers from "@/providers";
 import type { Metadata } from "next";
 
 import interFont from "@/assets/fonts/inter";
@@ -8,14 +9,12 @@ export const metadata: Metadata = {
   description: "Full Stack Developer based in Istanbul, Turkey.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={interFont.className}>{children}</body>
+      <body className={interFont.className}>
+        <Providers>{props.children}</Providers>
+      </body>
     </html>
   );
 }
