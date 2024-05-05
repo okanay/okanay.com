@@ -1,11 +1,12 @@
-'use client'
+"use client";
 
 import ContactAction from "@/actions/contact-action";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ContactStatus = "initial" | "pending" | "success" | "error";
 
 export const useContactForm = (timeout = 3000) => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<ContactStatus>("initial");
   const [message, setMessage] = useState("");
 
@@ -14,6 +15,10 @@ export const useContactForm = (timeout = 3000) => {
 
     setStatus(response.status as ContactStatus);
     setMessage(response.message);
+
+    if (response.status === "success") {
+      formRef.current?.reset();
+    }
   };
 
   useEffect(() => {
@@ -26,5 +31,5 @@ export const useContactForm = (timeout = 3000) => {
     }
   }, [status]);
 
-  return { onFormAction, status, message };
+  return { onFormAction, status, message, formRef };
 };

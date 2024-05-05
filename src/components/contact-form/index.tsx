@@ -6,11 +6,12 @@ import { ContactTextArea } from "./contact-textarea";
 import { useContactForm } from "@/hooks/useContactForm";
 
 export const ContactForm = () => {
-  const { onFormAction, status, message } = useContactForm();
+  const { onFormAction, status, message, formRef } = useContactForm();
 
   return (
     <div className="flex w-full max-w-[580px] flex-col gap-0.5 tracking-wider">
       <form
+        ref={formRef}
         action={onFormAction}
         className="flex w-full flex-col items-center justify-start gap-2 text-start tracking-wide"
       >

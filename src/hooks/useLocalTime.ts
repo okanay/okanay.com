@@ -49,8 +49,14 @@ export const useLocalTime = () => {
     return () => clearInterval(interval);
   }, [index]);
 
-  const hours = new Date(TimeDictionary[index].date).getHours();
-  const minutes = new Date(TimeDictionary[index].date).getMinutes();
+  const currentDate = new Date(TimeDictionary[index].date);
+
+  const hours = currentDate.getHours();
+  const minutes =
+    currentDate.getMinutes() < 10
+      ? `0${currentDate.getMinutes()}`
+      : currentDate.getMinutes();
+
   const timeZone = TimeDictionary[index].timeZone;
   const city = TimeDictionary[index].city;
 
