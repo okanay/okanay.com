@@ -13,7 +13,7 @@ export const ContactTooltip = ({
 }: ContactTooltipProps) => {
   return (
     <div className={"group relative"}>
-      <span className="z-20 flex cursor-not-allowed transition-all duration-300 group-hover:translate-x-[5%] group-hover:scale-110">
+      <span className="z-20 flex cursor-not-allowed transition-all duration-300 group-hover:scale-105">
         {children}
       </span>
       <span

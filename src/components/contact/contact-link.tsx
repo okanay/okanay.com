@@ -13,7 +13,7 @@ export const ContactLink = ({
     <a
       {...props}
       className={twMerge(
-        "transition-all duration-300 hover:translate-x-[5%] hover:scale-110",
+        "transition-all duration-300 hover:scale-105",
         className,
       )}
     >

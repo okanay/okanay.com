@@ -1,12 +1,13 @@
 import { ContactTooltip } from "@/components/contact/contact-tooltip";
 import { ContactLink } from "@/components/contact/contact-link";
+import { ContactCopy } from "@/components/contact/contact-copy";
 
 export const Contact = () => {
   return (
     <div className={"flex gap-[2rem] sm:absolute sm:right-0 sm:z-10"}>
       <div className={"flex flex-col gap-1 text-sm tracking-wider"}>
         <h4 className={"text-gray-500"}>Contact & CV:</h4>
-        <p>okanay@hotmail.com</p>
+        <ContactCopy>okanay@hotmail.com</ContactCopy>
         <ContactLink href={"/pdfs/cv-eng.pdf"} target="_blank">
           Read my CV
         </ContactLink>
