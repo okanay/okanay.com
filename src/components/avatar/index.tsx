@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AvatarJPEG from "../../../public/avatar.jpeg";
 
 export const Avatar = () => {
   return (
@@ -6,10 +7,10 @@ export const Avatar = () => {
       <div className="relative size-20">
         <div className="absolute bottom-1 right-0.5 z-20 size-2.5 rounded-full bg-gradient-to-br from-sky-400 to-purple-400 ring-4 ring-white" />
         <Image
-          src={"/avatar.jpeg"}
+          src={AvatarJPEG}
           alt={"okan ay avatar"}
-          width={80}
-          height={80}
+          placeholder={"blur"}
+          loading={"lazy"}
           className="absolute left-0 top-0 z-10 h-full w-full rounded-3xl bg-red-400"
         />
       </div>
