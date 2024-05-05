@@ -6,7 +6,15 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
-  plugins: []
+  theme: {
+    extend: {
+      fontFamily: {
+        lora: ["var(--font-lora)"],
+        inter: ["var(--font-inter)"],
+        chakra: ["var(--font-chakra)"],
+      },
+    },
+  },
+  plugins: [],
 };
 export default config;
