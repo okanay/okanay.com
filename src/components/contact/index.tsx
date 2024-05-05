@@ -4,7 +4,7 @@ import { ContactCopy } from "@/components/contact/contact-copy";
 
 export const Contact = () => {
   return (
-    <div className={"flex gap-[2rem] sm:absolute sm:right-0 sm:z-10"}>
+    <div className={"flex flex-wrap gap-[2rem] sm:absolute sm:right-0 sm:z-10"}>
       <div className={"flex flex-col gap-1 text-sm tracking-wider"}>
         <h4 className={"text-gray-500"}>Contact & CV:</h4>
         <ContactCopy>okanay@hotmail.com</ContactCopy>

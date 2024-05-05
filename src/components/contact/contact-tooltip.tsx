@@ -1,15 +1,14 @@
-import { LocaleLink } from "@/utils/locale-link";
 import { twMerge } from "tailwind-merge";
 
 interface ContactTooltipProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode;
   tooltip: string;
 }
+
 export const ContactTooltip = ({
   className,
   children,
   tooltip,
-  ...props
 }: ContactTooltipProps) => {
   return (
     <div className={"group relative"}>
