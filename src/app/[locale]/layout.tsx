@@ -1,7 +1,6 @@
 import Providers from "@/providers";
 import type { Metadata } from "next";
 
-import interFont from "@/assets/fonts/inter";
 import "./globals.css";
 import loraFont from "@/assets/fonts/lora";
 import chakraPetch from "@/assets/fonts/chakra-petch";
