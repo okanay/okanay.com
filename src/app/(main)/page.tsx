@@ -7,7 +7,7 @@ import { ContactForm } from "@/components/contact-form";
 
 export default function Home() {
   return (
-    <main className={"h-svh w-full px-4 pt-[40px] md:px-[80px]"}>
+    <main className={"min-h-svh w-full px-4 py-[40px] md:px-[80px]"}>
       <div className={"flex flex-col items-center gap-20 text-gray-700"}>
         <div className="relative flex w-full flex-col items-start gap-8 sm:flex-row sm:items-center sm:justify-center">
           <Avatar />
