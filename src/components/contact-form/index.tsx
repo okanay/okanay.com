@@ -4,6 +4,7 @@ import { ContactButton } from "./contact-button";
 import { ContactInput } from "./contact-input";
 import { ContactTextArea } from "./contact-textarea";
 import { useContactForm } from "@/hooks/useContactForm";
+import { AlertError, AlertSuccess } from "@/components/contact-form/alert";
 
 export const ContactForm = () => {
   const { onFormAction, status, message, formRef } = useContactForm();
@@ -35,8 +36,9 @@ export const ContactForm = () => {
         <ContactButton status={status} type={"submit"}>
           Share your message
         </ContactButton>
-        <p>{status === "error" && message}</p>
-        <p>{status === "success" && message}</p>
+
+        <AlertError message={message} status={status} />
+        <AlertSuccess message={message} status={status} />
       </form>
     </div>
   );
