@@ -7,7 +7,9 @@ export const Hero = () => {
       <h2 className="bg-gradient-to-br from-sky-400 to-purple-400 bg-clip-text text-lg text-transparent">
         Full Stack Developer.
       </h2>
-      <h2 className={'text-balance'}>Focus on React, Next.js, Node.js, and Tailwind CSS.</h2>
+      <h2 className={"text-balance"}>
+        Focus on React, Next.js, Node.js and TypeScript.
+      </h2>
       <p className={"text-balance font-light"}>
         Connect with me for freelance opportunities, collaborations, or just to
         say hi!
