@@ -4,6 +4,7 @@ import { Contact } from "@/components/contact";
 import { Hero } from "@/components/hero";
 import { Location } from "@/components/location";
 import { ContactForm } from "@/components/contact-form";
+import { FrameworkStacks } from "@/components/framework-stacks";
 
 export default function Home() {
   return (
@@ -17,6 +18,9 @@ export default function Home() {
           <Hero />
           <Location />
           <ContactForm />
+        </div>
+        <div className={"flex w-full items-start justify-start gap-8"}>
+          <FrameworkStacks />
         </div>
       </div>
     </main>
