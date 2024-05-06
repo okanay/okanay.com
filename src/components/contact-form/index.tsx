@@ -37,8 +37,10 @@ export const ContactForm = () => {
           Share your message
         </ContactButton>
 
-        <AlertError message={message} status={status} />
-        <AlertSuccess message={message} status={status} />
+        <div className={"relative h-[40] w-full"}>
+          <AlertError message={message} status={status} />
+          <AlertSuccess message={message} status={status} />
+        </div>
       </form>
     </div>
   );
