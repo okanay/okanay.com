@@ -64,22 +64,22 @@ export const ContactButton = ({
           <motion.div
             animate={{
               background: `linear-gradient(90deg, ${gradientDictionary[withPendingValue].from}, ${gradientDictionary[withPendingValue].to})`,
-              width: withHoverAndStatus ? "110%" : "16px",
+              width: withHoverAndStatus ? "125%" : "16px",
               height: withHoverAndStatus ? "200%" : "16px",
-              x: withHoverAndStatus ? "-35%" : "0%",
+              x: withHoverAndStatus ? "-28%" : "0%",
               y: withHoverAndStatus ? "-35%" : "0%",
               transition: {
                 y: {
                   duration: withHoverAndStatus ? 0.25 : 0.15,
                 },
                 height: {
-                  duration: withHoverAndStatus ? 0.3 : 0.15,
+                  duration: withHoverAndStatus ? 0.45 : 0.15,
                 },
                 x: {
-                  duration: withHoverAndStatus ? 0.45 : 0.15,
+                  duration: withHoverAndStatus ? 0.05 : 0.15,
                 },
                 width: {
-                  duration: withHoverAndStatus ? 0.45 : 0.15,
+                  duration: withHoverAndStatus ? 0.65 : 0.15,
                 },
                 ease: "easeInOut",
               },
