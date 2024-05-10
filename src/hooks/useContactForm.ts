@@ -1,22 +1,41 @@
 "use client";
 
-import ContactAction from "@/actions/contact-action";
 import { useEffect, useRef, useState } from "react";
 
 type ContactStatus = "initial" | "pending" | "success" | "error";
 
 export const useContactForm = (timeout = 3000) => {
   const formRef = useRef<HTMLFormElement>(null);
+
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
   const [status, setStatus] = useState<ContactStatus>("initial");
   const [message, setMessage] = useState("");
 
-  const onFormAction = async (formData: FormData) => {
-    const response = await ContactAction(formData);
+  const onFormAction = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("pending");
 
-    setStatus(response.status as ContactStatus);
-    setMessage(response.message);
+    const name = nameRef.current?.value;
+    const email = emailRef.current?.value;
+    const message = messageRef.current?.value;
 
-    if (response.status === "success") {
+    const response = await fetch("api/contact", {
+      method: "POST",
+      body: JSON.stringify({ name, email, message }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    setStatus(data.status as ContactStatus);
+    setMessage(data.message);
+
+    if (data.status === "success") {
       formRef.current?.reset();
     }
   };
@@ -31,5 +50,13 @@ export const useContactForm = (timeout = 3000) => {
     }
   }, [status]);
 
-  return { onFormAction, status, message, formRef };
+  return {
+    onFormAction,
+    status,
+    message,
+    formRef,
+    nameRef,
+    emailRef,
+    messageRef,
+  };
 };
