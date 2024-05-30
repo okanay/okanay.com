@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     if (!captchaValidation.success) {
       return NextResponse.json({
         status: "error",
-        message: "reCAPTCHA doğrulaması başarısız oldu. Lütfen tekrar deneyin.",
+        message: "bot musun kardeşim doğruyu söyle!",
       });
     }
 
