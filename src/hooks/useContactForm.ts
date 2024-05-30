@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 type ContactStatus = "initial" | "pending" | "success" | "error";
 
@@ -14,17 +15,29 @@ export const useContactForm = (timeout = 3000) => {
   const [status, setStatus] = useState<ContactStatus>("initial");
   const [message, setMessage] = useState("");
 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const onFormAction = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("pending");
 
+    if (!executeRecaptcha) {
+      console.log("not available to execute recaptcha");
+      setStatus("error");
+      return;
+    }
+
+
     const name = nameRef.current?.value;
     const email = emailRef.current?.value;
     const message = messageRef.current?.value;
+    const captcha = await executeRecaptcha("inquirySubmit");
+
+    console.log(captcha)
 
     const response = await fetch("api/contact", {
       method: "POST",
-      body: JSON.stringify({ name, email, message }),
+      body: JSON.stringify({ name, email, message, captcha }),
       headers: {
         "Content-Type": "application/json",
       },

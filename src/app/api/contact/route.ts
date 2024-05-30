@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
       name: (body.name as string) || "",
       email: (body.email as string) || "",
       message: (body.message as string) || "",
+      captcha: (body.captcha as string) || "",
     };
 
     const formDataValidation = ContactSchema.safeParse(rawFormData);
@@ -24,6 +25,29 @@ export async function POST(req: NextRequest) {
     }
 
     const validData = formDataValidation.data;
+
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    const formData = `secret=${secretKey}&response=${validData.captcha}`;
+
+    const response = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formData,
+      },
+    );
+
+    const captchaValidation = await response.json();
+
+    if (!captchaValidation.success) {
+      return NextResponse.json({
+        status: "error",
+        message: "reCAPTCHA doğrulaması başarısız oldu. Lütfen tekrar deneyin.",
+      });
+    }
 
     await transporter.sendMail({
       ...mailOptions,
