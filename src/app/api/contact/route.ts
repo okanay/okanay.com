@@ -42,10 +42,14 @@ export async function POST(req: NextRequest) {
 
     const captchaValidation = await response.json();
 
-    if (!captchaValidation.success) {
+    if (
+      captchaValidation === undefined ||
+      captchaValidation.success === false ||
+      captchaValidation.score < 0.65
+    ) {
       return NextResponse.json({
         status: "error",
-        message: "bot musun kardeşim doğruyu söyle!",
+        message: `You're a bot! Traitor! You're not welcome here! : ${captchaValidation.score}`,
       });
     }
 

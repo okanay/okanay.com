@@ -17,6 +17,8 @@ export const ContactForm = () => {
     messageRef,
   } = useContactForm();
 
+  console.log(message)
+
   return (
     <div className="flex w-full max-w-[580px] flex-col gap-0.5 tracking-wider">
       <form

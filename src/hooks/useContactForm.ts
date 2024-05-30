@@ -22,18 +22,15 @@ export const useContactForm = (timeout = 3000) => {
     setStatus("pending");
 
     if (!executeRecaptcha) {
-      console.log("not available to execute recaptcha");
       setStatus("error");
+      setMessage("Recaptcha not available.");
       return;
     }
-
 
     const name = nameRef.current?.value;
     const email = emailRef.current?.value;
     const message = messageRef.current?.value;
     const captcha = await executeRecaptcha("inquirySubmit");
-
-    console.log(captcha)
 
     const response = await fetch("api/contact", {
       method: "POST",
