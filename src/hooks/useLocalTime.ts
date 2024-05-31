@@ -3,32 +3,32 @@ import { useEffect, useState } from "react";
 const TimeDictionary = [
   {
     city: "Istanbul",
-    date: new Date().toLocaleString("en-US", { timeZone: "Europe/Istanbul" }),
+    date: "Europe/Istanbul",
     timeZone: "GMT+3",
   },
   {
     city: "New York",
-    date: new Date().toLocaleString("en-US", { timeZone: "America/New_York" }),
+    date: "America/New_York",
     timeZone: "GMT-4",
   },
   {
     city: "London",
-    date: new Date().toLocaleString("en-US", { timeZone: "Europe/London" }),
+    date: "Europe/London",
     timeZone: "GMT+1",
   },
   {
     city: "Tokyo",
-    date: new Date().toLocaleString("en-US", { timeZone: "Asia/Tokyo" }),
+    date: "Asia/Tokyo",
     timeZone: "GMT+9",
   },
   {
     city: "Sydney",
-    date: new Date().toLocaleString("en-US", { timeZone: "Australia/Sydney" }),
+    date: "Australia/Sydney",
     timeZone: "GMT+10",
   },
   {
     city: "Moscow",
-    date: new Date().toLocaleString("en-US", { timeZone: "Europe/Moscow" }),
+    date: "Europe/Moscow",
     timeZone: "GMT+3",
   },
 ];
@@ -49,7 +49,11 @@ export const useLocalTime = () => {
     return () => clearInterval(interval);
   }, [index]);
 
-  const currentDate = new Date(TimeDictionary[index].date);
+  const newDate = new Date().toLocaleString("en-US", {
+    timeZone: TimeDictionary[index].date,
+  });
+
+  const currentDate = new Date(newDate);
 
   const hours = currentDate.getHours();
   const minutes =
